@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# <p>指定したidのYouTube動画を張ります。</p>
+# <p>指定したidのYouTube動画を張ります(https対応)。</p>
 # <pre>
 #   {{youtube id}}
 # </pre>
@@ -33,8 +33,8 @@ sub getYouTubeVideoID  {
 
   my ($str) = @_;
 
-  if (!($str =~ m/http:\/\/www\.youtube\.com\/watch\?/) &&
-      !($str =~ m/http:\/\/jp\.youtube\.com\/watch\?/) ) {
+  if (!($str =~ m/https:\/\/www\.youtube\.com\/watch\?/) &&
+      !($str =~ m/https:\/\/jp\.youtube\.com\/watch\?/) ) {
       return $str;
   }
 
@@ -63,7 +63,7 @@ sub embed_youtube
 
     my $id = &getYouTubeVideoID($item);
 
-    my $src = "http://www.youtube.com/v/" . $id;
+    my $src = "https://www.youtube.com/v/" . $id;
 
     my $buf = "<object class=\"YouTube\" width=\"" . $width . "\" height=\"" . $height . "\"><param name=\"movie\" value=\"" . $src . "\"></param><embed src=\"" . $src . "\" type=\"application/x-shockwave-flash\" width=\"" . $width . "\" height=\"" . $height . "\"></embed></object>\n";
 
@@ -76,7 +76,7 @@ sub getNicoID
     my $item   = shift;
     my $id;
 
-    if ( $item =~ m/http:\/\/www\.nicovideo\.jp\/watch\/(sm[0-9]*)/ ) {
+    if ( $item =~ m/https:\/\/www\.nicovideo\.jp\/watch\/(sm[0-9]*)/ ) {
 	$id = $1;
     }
 
@@ -91,7 +91,7 @@ sub embed_nicovideo
 
     my $nicoID = getNicoID($item);
 
-    my $buf = "<iframe width=\"". $width . "\" height=\"". $height . "\" src=\"http://www.nicovideo.jp/thumb/" . $nicoID . "\" scrolling=\"no\" style=\"border:solid 1px #CCC;\" frameborder=\"0\"><a href=\"http://www.nicovideo.jp/watch/" . $nicoID . "\">【ニコニコ動画】</a></iframe>";
+    my $buf = "<iframe width=\"". $width . "\" height=\"". $height . "\" src=\"https://www.nicovideo.jp/thumb/" . $nicoID . "\" scrolling=\"no\" style=\"border:solid 1px #CCC;\" frameborder=\"0\"><a href=\"https://www.nicovideo.jp/watch/" . $nicoID . "\">【ニコニコ動画】</a></iframe>";
 
     return $buf;
 }
@@ -107,7 +107,7 @@ sub paragraph {
 
 	$item   = Util::escapeHTML($item);
 
-	if (($item =~ m/^http:\/\/www\.nicovideo\.jp/ )) {
+	if (($item =~ m/^https:\/\/www\.nicovideo\.jp/ )) {
 	    $width  = ($width  eq "")? 312 : int($width);
 	    $height = ($height eq "")? 176 : int($height);
 	    $buf    = embed_nicovideo($item, $width, $height);
