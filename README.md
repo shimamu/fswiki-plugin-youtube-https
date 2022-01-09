@@ -4,7 +4,7 @@
 
 Plugin for [FreeStyle Wiki](http://fswiki.osdn.jp/cgi-bin/wiki.cgi). Insert youtube in wiki.
 
-[Orginal plugin][orginal_plugin] isn't support 'https', so fix it.
+[Orginal plugin][orginal_plugin] isn't support 'https', so fixed it.
 
 ## How to use
 
