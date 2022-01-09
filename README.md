@@ -10,7 +10,11 @@ Plugin for [FreeStyle Wiki](http://fswiki.osdn.jp/cgi-bin/wiki.cgi). Insert yout
 
 1. Enter the text you want to copy.
 
-   Usage is the same as [the original plugin][orginal_plugin], but use 'https://' when you specify the url.
+   Usage is the same as [the original plugin][orginal_plugin], but use 'https://' when you specify the url like below.
+   
+   ```
+   {{youtube https://www.youtube.com/watch?v=...}}
+   ```
 
 
 ## How to install
